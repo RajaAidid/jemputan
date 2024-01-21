@@ -439,17 +439,15 @@
           "https://script.google.com/macros/s/AKfycbxvNOOfCX7RkUGrGJmrOcYWZYnKNbaUafol8k_9xrYzzlsZohXtY2Zov9WaqOlvw8QB/exec",
           {
             method: "POST",
+            redirect: "follow",
             headers: {
-              "Content-Type": "application/json",
+              "Content-Type": "text/plain",
             },
             body: JSON.stringify(data),
           }
-        )
-          .then((response) => response.text())
-          .then((message) => {
-            var tabucapan = document.getElementById("tabucapan");
-            tabucapan.classList.add("hidden");
-          });
+        );
+
+        tabucapan.classList.add("hidden");
       }
       // Muzik clicked
       function Muzik() {
