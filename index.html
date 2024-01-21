@@ -22,7 +22,7 @@
       Your browser does not support the audio element.
     </audio>
     <div
-      id="tabucapan"
+      id="tabUcapan"
       class="fixed bottom-16 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-white-500 shadow-2xl bg-[#DEAF84] text-black text-base flex flex-col justify-evenly pb-2 px-4 h-72 hidden"
     >
         <form id="rsvpForm" >
@@ -40,8 +40,8 @@
               class="w-full text-gray-600 font-medium appearance-none rounded-md p-2"
             >
               <option>Hadir</option>
-              <option>Mungkin</option>
-              <option>Tidak</option>
+              <option>Mungkin Hadir</option>
+              <option>Tidak Hadir</option>
             </select>
           </div>
           <div class="flex w-full mb-2">
@@ -384,14 +384,31 @@
         </div>
       </div>
       <div
-        class="bg-white max-w-md mx-auto flex justify-center items-center mb-40 text-center flex-col"
+        class="bg-white max-w-md mx-auto flex justify-center items-center mb-8 text-center flex-col"
       >
         <h1 class="font-thin text-md italic">
           Kehadiran anda amat kami hargai
         </h1>
       </div>
+      <div id="listUcapan" class="flex justify-center mb-40 text-center overflow-hidden">
+        
+      </div>
     </div>
     <script>
+      function dapatkanUcapan(){
+        fetch("https://script.google.com/macros/s/AKfycbxvNOOfCX7RkUGrGJmrOcYWZYnKNbaUafol8k_9xrYzzlsZohXtY2Zov9WaqOlvw8QB/exec", {
+        method: "GET"
+      }).then((response) => response.json()).then(
+        ucapans => {tunjukUcapan(ucapans)}
+      );
+      function tunjukUcapan(ucapans){
+        let u = "";
+      for(let i = 0; i < ucapans.length;i++){
+        u += '<div class="flex flex-col justify-center items-center">' + '<h1 class="italic text-sm font-extralight">' + ucapans[i].nama + ' (' + ucapans[i].kehadiran + ')' +' -</h1><p class="font-light">"' + ucapans[i].ucapan + '"</p>'
+      }
+      document.getElementById('listUcapan').innerHTML = u;
+      }
+      }
       function fadeOutElement() {
         var pre_screen = document.getElementById("pre_screen");
         var pre_content = document.getElementById("pre_content");
@@ -413,16 +430,16 @@
       // Hubungi clicked
       function Hubungi() {
         var tab = document.getElementById("tab");
-        var tabucapan = document.getElementById("tabucapan");
-        tabucapan.classList.add("hidden");
+        var tabUcapan = document.getElementById("tabUcapan");
+        tabUcapan.classList.add("hidden");
         tab.classList.toggle("hidden");
       }
       // Ucapan clicked
       function Ucapan() {
-        var tabucapan = document.getElementById("tabucapan");
+        var tabUcapan = document.getElementById("tabUcapan");
         var tab = document.getElementById("tab");
         tab.classList.add("hidden");
-        tabucapan.classList.toggle("hidden");
+        tabUcapan.classList.toggle("hidden");
       }
       function submitRSVP() {
         var nama = document.getElementById("nama").value;
@@ -447,7 +464,7 @@
           }
         );
 
-        tabucapan.classList.add("hidden");
+        tabUcapan.classList.add("hidden");
       }
       // Muzik clicked
       function Muzik() {
@@ -497,6 +514,7 @@
             "Majlis sudah berlangsung!";
         }
       }, 1000);
+      dapatkanUcapan();
     </script>
   </body>
   <footer>
