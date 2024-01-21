@@ -3,13 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="Jemputan Majlis Perkahwinan">
-    <meta property="og:image" content="https://raw.githubusercontent.com/RajaAidid/jemputan/main/src/og_image.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1080">
-    <meta property="og:image:height" content="1080">
+    <meta property="og:title" content="Jemputan Majlis Perkahwinan" />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/RajaAidid/jemputan/main/src/og_image.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1080" />
+    <meta property="og:image:height" content="1080" />
     <link href="./dist/output.css" rel="stylesheet" />
-    <link rel="icon" type="image/png" href="./src/favicon.png">
+    <link rel="icon" type="image/png" href="./src/favicon.png" />
   </head>
   <body class="bg-[#2F1B12]">
     <title>Jemputan Majlis Perkahwinan</title>
@@ -19,7 +22,38 @@
       Your browser does not support the audio element.
     </audio>
     <div
-      class="fixed bottom-16 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-white-500 shadow-2xl bg-[#DEAF84] text-white flex flex-col justify-evenly pb-2 px-4 h-40 hidden"
+      id="tabucapan"
+      class="fixed bottom-16 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-white-500 shadow-2xl bg-[#DEAF84] text-black text-base flex flex-col justify-evenly pb-2 px-4 h-72 hidden"
+    >
+        <form id="rsvpForm" >
+          <div class="mb-2">
+            <label>Nama</label>
+            <input class="w-full h-10 rounded-md p-2" type="text" id="nama"/>
+          </div>
+          <div class="mb-2">
+            <label>Ucapan</label>
+            <input class="w-full h-10 rounded-md p-2" type="text" id="ucapan"/>
+          </div>
+          <div class="flex flex-col mb-2">
+            <label>Hadir</label>
+            <select id="kehadiran"
+              class="w-full text-gray-600 font-medium appearance-none rounded-md p-2"
+            >
+              <option>Hadir</option>
+              <option>Mungkin</option>
+              <option>Tidak</option>
+            </select>
+          </div>
+          <div class="flex w-full mb-2">
+            <button class="bg-[#2F1B12] w-full p-2 rounded text-white" 
+            type="button"
+            onclick="submitRSVP()">Hantar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div
+      class="fixed bottom-16 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-white-500 shadow-2xl bg-[#DEAF84] text-black flex flex-col justify-evenly pb-2 px-4 h-40 hidden"
       id="tab"
     >
       <div class="flex flex-row">
@@ -184,6 +218,33 @@
         <div>
           <button
             class="flex flex-col justify-center items-center"
+            onclick="Ucapan()"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              class="bi bi-journal-plus"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5"
+              />
+              <path
+                d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"
+              />
+              <path
+                d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"
+              />
+            </svg>
+            <p id="rsvp" class="inline">Ucapan</p>
+          </button>
+        </div>
+        <div>
+          <button
+            class="flex flex-col justify-center items-center"
             onclick="Muzik()"
           >
             <svg
@@ -249,21 +310,21 @@
       >
         <p>Assalamualaikum W.B.T & Salam Sejahtera</p>
         <br />
-        <h1 class="text-lg">Raja Muhammad bin Raja Harun</h1>
+        <h1 class="text-lg">Raja Muhammad Bin Raja Harun</h1>
 
         <p>&</p>
-        <h1 class="text-lg">Marya binti Ariffin</h1>
+        <h1 class="text-lg">Marya Binti Ariffin</h1>
         <br />
-        <p>Dengan segala hormatnya kami ingin menjemput</p>
+        <p>Dengan besar hati menjemput</p>
         <p>Dato' | Datin | Tuan | Puan | Encik | Cik</p>
-        <p>hadir ke majlis perkahwinan putera kesayangan kami</p>
+        <p>hadir ke majlis perkahwinan putera kami yang dikasihi</p>
       </div>
       <div
         class="bg-white max-w-md mx-auto flex justify-center items-center mb-8 text-center flex-col"
       >
-        <h1 class="text-lg">Raja Aidid Putra bin Raja Muhammad</h1>
+        <h1 class="text-lg">Raja Aidid Putra Bin Raja Muhammad</h1>
         <p>&</p>
-        <h1 class="text-lg">Ras Farahin Fatini binti Suwandi</h1>
+        <h1 class="text-lg">Ras Farahin Fatini Binti Suwandi</h1>
       </div>
       <div
         class="bg-white max-w-md mx-auto flex justify-center items-center mb-8 text-center flex-col"
@@ -276,7 +337,7 @@
         <p>Asiana Grand Hall,</p>
         <p>A1-1-G, Space U8,</p>
         <p>Persiaran Pasak Bumi,</p>
-        <p>Bukit Jelutong</p>
+        <p>Bukit Jelutong,</p>
         <p>40150 Shah Alam, Selangor</p>
         <br />
         <p class="font-semibold">ATUR CARA MAJLIS</p>
@@ -352,7 +413,43 @@
       // Hubungi clicked
       function Hubungi() {
         var tab = document.getElementById("tab");
+        var tabucapan = document.getElementById("tabucapan");
+        tabucapan.classList.add("hidden");
         tab.classList.toggle("hidden");
+      }
+      // Ucapan clicked
+      function Ucapan() {
+        var tabucapan = document.getElementById("tabucapan");
+        var tab = document.getElementById("tab");
+        tab.classList.add("hidden");
+        tabucapan.classList.toggle("hidden");
+      }
+      function submitRSVP() {
+        var nama = document.getElementById("nama").value;
+        var ucapan = document.getElementById("ucapan").value;
+        var kehadiran = document.getElementById("kehadiran").value;
+
+        var data = {
+          nama: nama,
+          ucapan: ucapan,
+          kehadiran: kehadiran,
+        };
+
+        fetch(
+          "https://script.google.com/macros/s/AKfycbyIUdRNF5VLDdI30ZFb5FxDK0aOBxGL8SCm5Xt6P-8SjhfdkWPl1U3N7NRCuWk02Jtz/exec",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        )
+          .then((response) => response.text())
+          .then((message) => {
+            var tabucapan = document.getElementById("tabucapan");
+            tabucapan.classList.add("hidden");
+          });
       }
       // Muzik clicked
       function Muzik() {
