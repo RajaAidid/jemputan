@@ -398,8 +398,9 @@
       function dapatkanUcapan(){
         fetch("https://script.google.com/macros/s/AKfycbxvNOOfCX7RkUGrGJmrOcYWZYnKNbaUafol8k_9xrYzzlsZohXtY2Zov9WaqOlvw8QB/exec", {
         method: "GET",
+        redirect: "follow",
         headers: {
-              "Content-Type": "application/json",
+              "Content-Type": "text/plain;charset=utf-8",
             },
       }).then((response) => response.json()).then(
         ucapans => {tunjukUcapan(ucapans)}
@@ -461,11 +462,11 @@
             method: "POST",
             redirect: "follow",
             headers: {
-              "Content-Type": "application/json",
+              "Content-Type": "text/plain;charset=utf-8",
             },
             body: JSON.stringify(data),
           }
-        ).then(()=> dapatkanUcapan());
+        ).then((response)=> dapatkanUcapan());
 
         tabUcapan.classList.add("hidden");
       }
