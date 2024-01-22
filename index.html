@@ -390,9 +390,7 @@
           Kehadiran anda amat kami hargai
         </h1>
       </div>
-      <div id="listUcapan" class="flex justify-center mb-40 text-center overflow-hidden">
-        
-      </div>
+      <div id="listUcapan" class="flex flex-col justify-center mb-40 text-center overflow-hidden">
     </div>
     <script>
       function dapatkanUcapan(){
@@ -408,7 +406,7 @@
       function tunjukUcapan(ucapans){
         let u = "";
       for(let i = 0; i < ucapans.length;i++){
-        u += '<div class="flex flex-col justify-center items-center mb-4">' + '<h1 class="italic text-sm font-extralight">' + ucapans[i].nama + ' (' + ucapans[i].kehadiran + ')' +' -</h1><p class="font-light">"' + ucapans[i].ucapan + '"</p>'
+        u += '<div class="flex flex-col justify-center items-center mb-4">' + '<h1 class="italic text-sm font-extralight">' + ucapans[i].nama + ' (' + ucapans[i].kehadiran + ')' +' -</h1><p class="font-light">"' + ucapans[i].ucapan + '"</p></div>'
       }
       document.getElementById('listUcapan').innerHTML = u;
       }
