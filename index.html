@@ -397,14 +397,17 @@
     <script>
       function dapatkanUcapan(){
         fetch("https://script.google.com/macros/s/AKfycbxvNOOfCX7RkUGrGJmrOcYWZYnKNbaUafol8k_9xrYzzlsZohXtY2Zov9WaqOlvw8QB/exec", {
-        method: "GET"
+        method: "GET",
+        headers: {
+              "Content-Type": "application/json",
+            },
       }).then((response) => response.json()).then(
         ucapans => {tunjukUcapan(ucapans)}
       );
       function tunjukUcapan(ucapans){
         let u = "";
       for(let i = 0; i < ucapans.length;i++){
-        u += '<div class="flex flex-col justify-center items-center">' + '<h1 class="italic text-sm font-extralight">' + ucapans[i].nama + ' (' + ucapans[i].kehadiran + ')' +' -</h1><p class="font-light">"' + ucapans[i].ucapan + '"</p>'
+        u += '<div class="flex flex-col justify-center items-center mb-2">' + '<h1 class="italic text-sm font-extralight">' + ucapans[i].nama + ' (' + ucapans[i].kehadiran + ')' +' -</h1><p class="font-light">"' + ucapans[i].ucapan + '"</p>'
       }
       document.getElementById('listUcapan').innerHTML = u;
       }
@@ -458,7 +461,7 @@
             method: "POST",
             redirect: "follow",
             headers: {
-              "Content-Type": "text/plain",
+              "Content-Type": "application/json",
             },
             body: JSON.stringify(data),
           }
