@@ -408,7 +408,7 @@
       function tunjukUcapan(ucapans){
         let u = "";
       for(let i = 0; i < ucapans.length;i++){
-        u += '<div class="flex flex-col justify-center items-center mb-2">' + '<h1 class="italic text-sm font-extralight">' + ucapans[i].nama + ' (' + ucapans[i].kehadiran + ')' +' -</h1><p class="font-light">"' + ucapans[i].ucapan + '"</p>'
+        u += '<div class="flex flex-col justify-center items-center mb-4">' + '<h1 class="italic text-sm font-extralight">' + ucapans[i].nama + ' (' + ucapans[i].kehadiran + ')' +' -</h1><p class="font-light">"' + ucapans[i].ucapan + '"</p>'
       }
       document.getElementById('listUcapan').innerHTML = u;
       }
@@ -461,12 +461,13 @@
           {
             method: "POST",
             redirect: "follow",
+            mode: "no-cors",
             headers: {
               "Content-Type": "text/plain;charset=utf-8",
             },
             body: JSON.stringify(data),
           }
-        ).then((response)=> dapatkanUcapan());
+        ).then(()=> dapatkanUcapan());
 
         tabUcapan.classList.add("hidden");
       }
